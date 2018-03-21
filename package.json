@@ -1,0 +1,13 @@
+{
+    "name": "aliyun_node_sdk",
+    "version": "1.0.0",
+    "private": false,
+    "dependencies" : {
+        "moment": "~2.18.1",
+        "node-uuid": "~1.4.7",
+        "urlencode": "~1.1.0 ",
+        "crypto": "~0.0.3",
+        "co": "^4.6.0",
+        "request": "~2.74.0"
+    }
+}
