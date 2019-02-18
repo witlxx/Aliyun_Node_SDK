@@ -1,0 +1,54 @@
+O(m + n) 复杂度找出两个数组相同的元素
+function elementsInBothArr(arr1, arr2) {
+  let hashMap = {}, newArr = [];;
+  for (let i = 0; i < arr1.length; i++) {
+    hashMap[arr1[i]] = i + 1;
+  }
+  for (let j = 0; j < arr2.length; j++) {
+    if (hashMap[arr2[j]]) {
+      newArr.push(arr2[j]);
+    }
+  }
+  return newArr;
+}
+
+O(m + n) 复杂度找出两个数组不同的值(第一个数组中有的但是第二个数组中没有的值)
+function checkIds(arr1, arr2, check) {
+  if (!Array.isArray(arr1)) return false;
+  if (!Array.isArray(arr2)) return false;
+  if (check) {
+    return elementsInBothArr(arr1, arr2);
+  } else {
+    // O(m + n) 从一个数组中删除另一个数组的值
+    let hash = {}, newArr = [];
+    let eInBothArr = elementsInBothArr(arr1, arr2);
+    for (let i = 0; i < eInBothArr.length; i++) {
+      hash[eInBothArr[i]] = i + 1;
+    }
+    for (let j = 0; j < arr1.length; j++) {
+      if (!hash[arr1[j]]) {
+        newArr.push(arr1[j]);
+      }
+    }
+    return newArr;
+  }
+}
+
+剔除重复元素
+/**
+ * 去除数组内的冗余元素
+ * @param Array array
+ * @return Array
+ */
+exports.filterRedundancy = function (array) {
+  if (!Array.isArray(array)) return [];
+  if (array.length === 0) return [];
+  let result = [], hash = {};
+  for (let i = 0, elem; (elem = array[i]) != null; i++) {
+    if (!hash[elem]) {
+      result.push(elem);
+      hash[elem] = true;
+    }
+  }
+  return result;
+};
